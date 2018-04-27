@@ -37,7 +37,12 @@ static MMCrashLogManager * manager;
 }
 
 - (void)setDBPath:(NSString *)dbPath{
-    self.dbPath = dbPath;
+    NSSearchPathForDirectoriesInDomains(1, 1, YES);
+    NSString * newDBPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"crash.log"];
+    if (![[NSFileManager defaultManager] isExecutableFileAtPath:newDBPath]) {
+        [[NSFileManager defaultManager] copyItemAtPath:dbPath toPath:newDBPath error:NULL];
+    };
+    self.dbPath = newDBPath;
 }
 
 - (void)save:(NSException *)exception{
@@ -58,3 +63,4 @@ static MMCrashLogManager * manager;
     return list;
 }
 @end
+
