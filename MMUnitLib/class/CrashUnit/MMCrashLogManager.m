@@ -29,15 +29,28 @@ static MMCrashLogManager * manager;
     return manager;
 }
 
+- (instancetype)init{
+    if (self = [super init]) {
+        [self setDefultDBPath];
+    }
+    return self;
+}
+
 -(NSString *)getVersionId{
     return @"0.0.1";
 }
 - (void)setProjectId:(NSString *)projectId{
     
 }
-
+- (void)setDefultDBPath{
+    NSString * dbPath = [[[NSBundle mainBundle] pathForResource:@"MMUnitLib" ofType:@"bundle"] stringByAppendingPathComponent:@"CrashTable.db"];
+    NSString * newDBPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"crash.log"];
+    if (![[NSFileManager defaultManager] isExecutableFileAtPath:newDBPath]) {
+        [[NSFileManager defaultManager] copyItemAtPath:dbPath toPath:newDBPath error:NULL];
+    };
+    self.dbPath = newDBPath;
+}
 - (void)setDBPath:(NSString *)dbPath{
-    NSSearchPathForDirectoriesInDomains(1, 1, YES);
     NSString * newDBPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"crash.log"];
     if (![[NSFileManager defaultManager] isExecutableFileAtPath:newDBPath]) {
         [[NSFileManager defaultManager] copyItemAtPath:dbPath toPath:newDBPath error:NULL];
