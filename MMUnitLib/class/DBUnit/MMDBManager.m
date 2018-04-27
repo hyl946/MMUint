@@ -7,7 +7,7 @@
 //
 
 #import "MMDBManager.h"
-#import <FMDB.h>
+#import <FMDB/FMDB.h>
 #import <objc/runtime.h>
 #import "MMJsonModel.h"
 
