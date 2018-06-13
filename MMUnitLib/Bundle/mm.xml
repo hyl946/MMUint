@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Pages>
+    <Page name="appName" needLogin="T">
+        
+    </Page>
+    <Page name="appName" >
+        <Control className="MMUnitLib" needLogin="T" />
+    </Page>
+
+    <Page name="appNameDisPlayName" >
+        <Control className="MM工具" needLogin="T" />
+        
+        <integer-array name="mm_id">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+        </integer-array>
+        
+        <string_array>
+            <item>我是谁？</item>
+            <item>你猜猜我是谁？</item>
+            <item>我不猜我是谁？</item>
+        </string_array>
+        
+        <color_array name="mm_colors">
+            <item>#FF00FF</item>
+            <item>#00FFFF</item>
+            <item>#FFFF00</item>
+        </color_array>
+
+    </Page>
+
+
+    <Page name="location" >
+        <Control className="class" needLogin="T" />
+        <URL>
+            <URLParam urlName="unit-xml" businessName="fromPush" />
+            <URLParam urlName="params2" businessName="transactionDetail" />
+        </URL>
+    </Page>
+    
+</Pages>

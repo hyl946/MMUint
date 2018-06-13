@@ -59,7 +59,7 @@ static MMDBManager * manager;
     
     if (isFileExist) {
         if (isTableExist) {
-            NSLog(@"Table is Exist");
+            MM_NSLog(@"Table is Exist");
             return isTableExist;
         }
         else {
@@ -85,7 +85,7 @@ static MMDBManager * manager;
         }
     }
     else {
-        NSLog(@"File is not Exist");
+        MM_NSLog(@"File is not Exist");
         return NO;
     }
     return NO;
@@ -170,7 +170,7 @@ static MMDBManager * manager;
                 } @catch (NSException *exception) {
                     
                 } @finally {
-//                    NSLog(@"%@",array);
+//                    MM_NSLog(@"%@",array);
                 }
             }
             [db close];
@@ -215,7 +215,7 @@ static MMDBManager * manager;
                 } @catch (NSException *exception) {
                     
                 } @finally {
-                    //                    NSLog(@"%@",array);
+                    //                    MM_NSLog(@"%@",array);
                 }
             }
             [db close];
